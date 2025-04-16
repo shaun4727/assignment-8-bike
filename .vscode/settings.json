@@ -1,0 +1,33 @@
+{
+	"editor.formatOnSave": true,
+	"editor.linkedEditing": true,
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.fontFamily": "'Fira Code', Consolas",
+	"javascript.updateImportsOnFileMove.enabled": "never",
+	"javascript.inlayHints.parameterNames.enabled": "all",
+	"javascript.inlayHints.propertyDeclarationTypes.enabled": true,
+	"javascript.inlayHints.parameterTypes.enabled": true,
+	"javascript.inlayHints.functionLikeReturnTypes.enabled": true,
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.formatOnSave": true
+	},
+	"[vue]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.formatOnSave": true
+	},
+	"editor.codeActionsOnSave": {
+		"source.fixAll": "always",
+		"source.fixAll.eslint": "always",
+		"source.organizeImports": "always"
+	},
+	"cSpell.words": [
+		"Challan",
+		"fgproductid",
+		"Jerp",
+		"productdtl",
+		"requisitionid",
+		"requisitioninfo",
+		"requisitionno"
+	]
+}
