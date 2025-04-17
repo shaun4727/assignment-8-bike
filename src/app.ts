@@ -11,7 +11,7 @@ app.use(express.json())
 app.use(
   cors({
     // origin: ["http://localhost:5173"],
-    origin: ['https://ph-assignment-4-client-book-shop.vercel.app'],
+    // origin: ['https://ph-assignment-4-client-book-shop.vercel.app'],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
     allowedHeaders: ['Content-Type', 'Authorization'],

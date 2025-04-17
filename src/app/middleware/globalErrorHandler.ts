@@ -1,6 +1,9 @@
-import { TErrorSource } from './../interface/error'
+import { TErrorSource } from '../../interface/error'
 /* eslint-disable no-unused-vars */
-import { PrismaClient } from '@prisma/client'
+import {
+  PrismaClientKnownRequestError,
+  PrismaClientValidationError,
+} from '@prisma/client/runtime/library'
 
 import { NextFunction, Request, Response } from 'express'
 import { ZodError } from 'zod'
@@ -16,7 +19,6 @@ const globalErrorHandler = (
   next: NextFunction,
 ) => {
   let statusCode = 500
-  const prisma = new PrismaClient()
   let message = 'Something went wrong!'
   let error: TErrorSource = [
     {
@@ -25,13 +27,13 @@ const globalErrorHandler = (
     },
   ]
 
-  if (err instanceof prisma.PrismaClientValidationError) {
+  if (err instanceof PrismaClientValidationError) {
     message = 'Validation Error'
-    error = err.message
-  } else if (err instanceof prisma.PrismaClientKnownRequestError) {
+    error = [{ path: '', message: err.message }]
+  } else if (err instanceof PrismaClientKnownRequestError) {
     if (err.code === 'P2002') {
       message = 'Duplicate Key error'
-      error = err.meta
+      error = [{ path: '', message: err.meta!.target!.toString() }]
     }
   }
 

@@ -1,4 +1,4 @@
-import { TErrorSource, TGenericErrorResponse } from './../interface/error'
+import { TErrorSource, TGenericErrorResponse } from './../../interface/error'
 
 export const handleDuplicateError = (err: any): TGenericErrorResponse => {
   const match = err.message.match(/"([^"]*)"/)

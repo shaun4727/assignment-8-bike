@@ -6,3 +6,38 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Customer {
+  customerId String   @id @default(uuid())
+  name       String
+  email      String   @unique
+  phone      String
+  createdAt  DateTime @default(now())
+  deleted    Boolean  @default(false)
+
+  @@map("customers")
+}
+
+
+model Bike {
+  bikeId        String   @id @default(uuid())
+  brand         String
+  model         String   @unique
+  year          Int
+  customerId    String
+  deleted       Boolean @default(false)
+
+  @@map("bikes")
+}
+
+model Service {
+  serviceId         String   @id @default(uuid())
+  serviceDate       String
+  description       String   
+  status            String
+  bikeId            String
+  deleted           Boolean @default(false)
+  completionDate    String?
+
+  @@map("services")
+}
