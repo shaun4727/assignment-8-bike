@@ -26,7 +26,7 @@ This repository is currently public. To setup this project locally follow the in
 
 - npm run build ( run this command)
 
-- npm start (to start the server locally)
+- npm run dev (to start the server locally)
 
 - change the cors origin in src/app folder.
 
