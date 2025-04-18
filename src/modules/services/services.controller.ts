@@ -24,6 +24,17 @@ const getServiceRequestController = catchAsync(async (req, res) => {
   })
 })
 
+const getServiceRequestByStatusController = catchAsync(async (req, res) => {
+  const result = await ServiceServices.getServiceDataByStatusFromDB()
+
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: 'Overdue or pending services fetched successfully',
+    data: result,
+  })
+})
+
 const getSpecificServiceRequestController = catchAsync(async (req, res) => {
   const { serviceId } = req.params
   const result = await ServiceServices.getSpecificServiceDataFromDB(serviceId)
@@ -56,4 +67,5 @@ export const ServiceControllers = {
   getServiceRequestController,
   getSpecificServiceRequestController,
   updateSpecificServiceRequestController,
+  getServiceRequestByStatusController,
 }

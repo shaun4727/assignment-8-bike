@@ -1,7 +1,8 @@
+import { ServiceStatus } from '@prisma/client'
 export interface ServiceType {
   bikeId: string
   serviceDate: string
   description: string
-  status: string
+  status: ServiceStatus
   completionDate?: string
 }

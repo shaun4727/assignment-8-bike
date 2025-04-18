@@ -26,6 +26,7 @@ model Bike {
   year          Int
   customerId    String
   deleted       Boolean @default(false)
+  createdAt     DateTime @default(now())
 
   @@map("bikes")
 }
@@ -34,10 +35,18 @@ model Service {
   serviceId         String   @id @default(uuid())
   serviceDate       String
   description       String   
-  status            String
+  status            ServiceStatus
+// status            ServiceStatus @default(PENDING)
   bikeId            String
   deleted           Boolean @default(false)
   completionDate    String?
+  createdAt         DateTime @default(now())
 
   @@map("services")
+}
+
+enum ServiceStatus{
+    PENDING     @map("pending")
+    DONE        @map("done")
+    IN_PROGRESS @map("in-progress")
 }

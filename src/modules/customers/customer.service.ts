@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client'
+import AppError from '../../app/utils/AppError'
 import { CustomerType } from './customer.interface'
 
 const prisma = new PrismaClient()
@@ -32,7 +33,7 @@ const getCustomerDataFromDB = async () => {
 }
 
 const getSpecificCustomerDataFromDB = async (id: string) => {
-  const result = await prisma.customer.findUniqueOrThrow({
+  const result = await prisma.customer.findUnique({
     where: { customerId: id },
     select: {
       customerId: true,
@@ -42,7 +43,9 @@ const getSpecificCustomerDataFromDB = async (id: string) => {
       createdAt: true,
     },
   })
-
+  if (!result) {
+    throw new AppError(404, 'Customer not found')
+  }
   return result
 }
 

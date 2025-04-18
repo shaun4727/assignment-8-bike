@@ -14,6 +14,7 @@ router.post(
 )
 
 router.get('/', ServiceControllers.getServiceRequestController)
+router.get('/status', ServiceControllers.getServiceRequestByStatusController)
 
 router.get(
   '/:serviceId',
